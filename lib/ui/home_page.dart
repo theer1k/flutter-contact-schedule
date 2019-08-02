@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:contact_schedule/helpers/contact_helper.dart';
 import 'package:flutter/material.dart';
-
 import 'contact_page.dart';
 
 class HomePage extends StatefulWidget {
