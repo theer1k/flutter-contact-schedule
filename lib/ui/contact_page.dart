@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:image_picker/image_picker.dart';
 import 'package:contact_schedule/helpers/contact_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -73,6 +73,18 @@ class _ContactPageState extends State<ContactPage> {
                                 ? FileImage(File(_editedContact.img))
                                 : AssetImage("images/person.png"))),
                   ),
+                  onTap: () {
+                    ImagePicker.pickImage(source: ImageSource.camera)
+                        .then((file) {
+                      if (file == null) {
+                        return;
+                      }
+
+                      setState(() {
+                        _editedContact.img = file.path;
+                      });
+                    });
+                  },
                 ),
                 TextField(
                   controller: _nameController,
@@ -137,7 +149,7 @@ class _ContactPageState extends State<ContactPage> {
 
       return Future.value(false);
     } else {
-     return Future.value(true);
+      return Future.value(true);
     }
   }
 }
